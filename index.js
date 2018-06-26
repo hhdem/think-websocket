@@ -63,6 +63,21 @@ module.exports = app => {
       broadcast(event, data) {
         this.res.statusCode = 200;
         instance.broadcast(event, data, this.req.websocket);
+      },
+
+        /**
+         *
+         * @param event
+         * @param data
+         */
+      toroom(room, event, data) {
+          this.res.statusCode = 200;
+          instance.toroom(room, event, data, this.req.websocket);
+      },
+
+      joinroom(room, event, data) {
+          this.res.statusCode = 200;
+          instance.joinroom(room, event, data, this.req.websocket);
       }
     },
     controller: {
@@ -87,6 +102,12 @@ module.exports = app => {
       },
       broadcast(event, data) {
         return this.ctx.broadcast(event, data);
+      },
+      toroom(room, event, data) {
+          return this.ctx.toroom(room, event, data);
+      },
+      joinroom(room, event, data) {
+          return this.ctx.joinroom(room, event, data);
       }
     }
   };
