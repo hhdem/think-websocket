@@ -78,7 +78,12 @@ module.exports = app => {
       joinroom(room, event, data) {
           this.res.statusCode = 200;
           instance.joinroom(room, event, data, this.req.websocket);
-      }
+      },
+
+        leaveroom(room, event, data) {
+            this.res.statusCode = 200;
+            instance.leaveroom(room, event, data, this.req.websocket);
+        }
     },
     controller: {
       get data() {
@@ -108,7 +113,10 @@ module.exports = app => {
       },
       joinroom(room, event, data) {
           return this.ctx.joinroom(room, event, data);
-      }
+      },
+        leaveroom(room, event, data) {
+            return this.ctx.joinroom(room, event, data);
+        }
     }
   };
 };
